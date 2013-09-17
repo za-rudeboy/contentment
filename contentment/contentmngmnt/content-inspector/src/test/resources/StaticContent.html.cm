@@ -1,0 +1,4 @@
+file.path = /StaticContent.html
+content.path = /StaticContent.html
+content.id = 100
+content.type = html

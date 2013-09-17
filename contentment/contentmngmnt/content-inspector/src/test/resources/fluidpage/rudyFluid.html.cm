@@ -1,0 +1,4 @@
+file.path = /fluidpage/rudyFluid.html
+content.path = /fluidpage/rudyFluid.html
+content.id = 101
+content.type = html

@@ -1,0 +1,4 @@
+file.path = /fluidpage/StaticContent.html
+content.path = /fluidpage/StaticContent.html
+content.id = 102
+content.type = html

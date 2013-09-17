@@ -16,15 +16,53 @@
 
 <dependencyManagement>
 	  <dependencies>
-	    		<dependency>
-					<groupId>junit</groupId>
-					<artifactId>junit</artifactId>
-					<version>4.8.1</version>
-					<scope>test</scope>
-				</dependency>
+	    	<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.1</version>
+				<scope>test</scope>
+			</dependency>
+				
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>
+				
+				
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>	
+				
+				
 	  </dependencies>
   </dependencyManagement>
 	<modules>
 		<module>content-inspector</module>
 	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

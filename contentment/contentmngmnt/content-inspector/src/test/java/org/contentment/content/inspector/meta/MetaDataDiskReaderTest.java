@@ -1,15 +1,12 @@
 package org.contentment.content.inspector.meta;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
-import org.contentment.content.inspector.meta.ContentMetaDataHolder;
-import org.contentment.content.inspector.meta.MetaDataDiskReader;
-import org.contentment.content.inspector.meta.MetaSearch;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.sideproject.configuration.ConfigurationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -37,7 +35,9 @@ public class MetaDataDiskReaderTest {
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 		PropertiesConfiguration propConf = new PropertiesConfiguration();
-		propConf.addProperty("static.html.baseDirectory", "/home/f4653564/RudyPersWs/StaticHTML");
+		ClassPathResource classPathResource = new ClassPathResource("StaticHTML");
+		
+		propConf.addProperty("static.html.baseDirectory", classPathResource.getFile().getAbsolutePath());
 		
 		when(configurationProvider.getConfigurations())
 					.thenReturn(propConf);

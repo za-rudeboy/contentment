@@ -10,6 +10,8 @@
 		<property name="metaDataVisitor" ref="metaDataVisitor"></property>
 		<property name="configurationProvider" ref="configurationProvider"></property>
 	</bean>
-	<bean id="metaDataVisitor" class="org.contentment.content.inspector.meta.MetaDataVisitor"></bean>
+	<bean id="metaDataVisitor" class="org.contentment.content.inspector.meta.MetaDataVisitor">
+		<property name="configurationProvider" ref="configurationProvider"></property>
+	</bean>
 	
 </beans>

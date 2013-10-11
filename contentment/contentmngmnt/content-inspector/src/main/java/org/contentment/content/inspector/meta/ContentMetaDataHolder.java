@@ -15,16 +15,18 @@ public class ContentMetaDataHolder implements Serializable {
 	
 
 	private static final long serialVersionUID = -1625730030028932089L;
-	private String filePath;
+	private String relativeFilePath;
+	private String absoluteFilePath;
 	private String contentPath;
 	private String contentId;
 	private String contentType;
 	
-	public String getFilePath() {
-		return filePath;
+
+	public String getRelativeFilePath() {
+		return relativeFilePath;
 	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void setRelativeFilePath(String relativeFilePath) {
+		this.relativeFilePath = relativeFilePath;
 	}
 	public String getContentPath() {
 		return contentPath;
@@ -43,6 +45,12 @@ public class ContentMetaDataHolder implements Serializable {
 	}
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
+	}
+	public String getAbsoluteFilePath() {
+		return absoluteFilePath;
+	}
+	public void setAbsoluteFilePath(String absoluteFilePath) {
+		this.absoluteFilePath = absoluteFilePath;
 	}
 	
 	

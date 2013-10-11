@@ -3,6 +3,7 @@ package org.contentment.content.provider;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.contentment.content.inspector.meta.ContentMetaDataHolder;
@@ -36,6 +37,7 @@ public class DiskContentProviderTest {
 	DiskContentProvider contentProvider;
 	
 	ContentMetaDataHolder value = new ContentMetaDataHolder();
+	ContentMetaDataHolder value2 = new ContentMetaDataHolder();
 	
 	@Before
 	public void setUp() throws Exception {
@@ -44,14 +46,22 @@ public class DiskContentProviderTest {
 		
 		value.setContentId("100");
 		value.setContentPath("/StaticContent.html");
-		value.setContentType("html");
+		value.setContentType("text/html");
 		value.setRelativeFilePath("/StaticContent.html");
 		
-		ClassPathResource classPathResource = new ClassPathResource("StaticHTML/StaticContent.html");
+		value2.setContentId("101");
+		value2.setContentPath("/fluidpage/rudyFluid.html");
+		value2.setContentType("text/html");
+		value2.setRelativeFilePath("/fluidpage/rudyFluid.html");
 		
+		ClassPathResource classPathResource = new ClassPathResource("StaticHTML/StaticContent.html");
 		value.setAbsoluteFilePath(classPathResource.getFile().getAbsolutePath());
 		
+		ClassPathResource classPathResourceq2 = new ClassPathResource("StaticHTML/fluidpage/rudyFluid.html");
+		value2.setAbsoluteFilePath(classPathResourceq2.getFile().getAbsolutePath());
+		
 		when(metaDataReader.getMetadata("100", MetaSearch.BY_ID)).thenReturn(value);
+		when(metaDataReader.getMetadata("101", MetaSearch.BY_ID)).thenReturn(value2);
 	}
 
 	@Test
@@ -81,9 +91,15 @@ public class DiskContentProviderTest {
 		
 	}
 
-	@Ignore
-	public void testGetMultipleContent() {
-		fail("Not yet implemented"); // TODO
+	@Test
+	public void testGetMultipleContent() throws Exception {
+		
+		String[] string = {"100","101"};
+		Map<String, ContentHolder>  map = contentProvider.getMultipleContent(string, MetaSearch.BY_ID);
+		
+		for (ContentHolder contentHolder  :map.values()){
+			assertNotNull(contentHolder.getContent());
+		}
 	}
 
 }

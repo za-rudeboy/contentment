@@ -21,6 +21,6 @@ public interface ContentProvider {
 	
 	public ContentHolder getContent(String value, MetaSearch metaSearch) throws Exception;
 	
-	public Map<String, ContentHolder> getMultipleContent(String[] multipleIds);
+	public Map<String, ContentHolder> getMultipleContent(String[] multipleValues, MetaSearch metaSearch) throws Exception;
 
 }

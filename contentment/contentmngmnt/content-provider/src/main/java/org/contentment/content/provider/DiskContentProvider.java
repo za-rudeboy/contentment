@@ -2,6 +2,7 @@ package org.contentment.content.provider;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -39,9 +40,15 @@ public class DiskContentProvider implements ContentProvider {
 	}
 
 	@Override
-	public Map<String, ContentHolder> getMultipleContent(String[] multipleIds) {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<String, ContentHolder> getMultipleContent(String[] multipleIds, MetaSearch metaSearch) throws Exception {
+		
+		Map<String, ContentHolder> contentMap = new HashMap<String, ContentHolder>();
+		
+		for (int i = 0; i < multipleIds.length; i++){
+			contentMap.put(multipleIds[i], getContent(multipleIds[i], metaSearch));
+		}
+		
+		return contentMap;
 	}
 
 	public MetaDataReader getMetaDataReader() {

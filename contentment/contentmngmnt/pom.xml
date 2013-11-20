@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>za.co.sideproject.contentment</groupId>
-  <artifactId>contentmngmnt</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<groupId>za.co.sideproject.contentment</groupId>
+	<artifactId>contentmngmnt</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <name>contentmngmnt</name>
-  <url>http://maven.apache.org</url>
+	<name>contentmngmnt</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-<dependencyManagement>
-	  <dependencies>
-	    	<dependency>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.8.1</version>
 				<scope>test</scope>
 			</dependency>
-				
+
+
+
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
@@ -39,21 +42,59 @@
 				<artifactId>spring-context</artifactId>
 				<version>3.2.3.RELEASE</version>
 			</dependency>
-				
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>3.2.3.RELEASE</version>
+			</dependency>	
 				
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
-				<version>3.2.3.RELEASE</version>
-			</dependency>	
-				
-				
-	  </dependencies>
-  </dependencyManagement>
+				<version>3.2.3.RELEASE</version> 
+			</dependency>
+
+			
+
+
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.9.5</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.jboss.resteasy</groupId>
+				<artifactId>resteasy-jaxrs</artifactId>
+				<version>3.0.4.Final</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.7</version>
+		</dependency>
+
+
+		</dependencies>
+	</dependencyManagement>
 	<modules>
-		 <module>content-inspector</module>
-   		 <module>content-provider</module>
-  </modules>
+		<module>content-inspector</module>
+		<module>content-provider</module>
+		<module>content-service</module>
+	</modules>
 	<build>
 		<plugins>
 			<plugin>
@@ -63,7 +104,7 @@
 					<source>1.7</source>
 					<target>1.7</target>
 				</configuration>
-				
+
 			</plugin>
 		</plugins>
 	</build>

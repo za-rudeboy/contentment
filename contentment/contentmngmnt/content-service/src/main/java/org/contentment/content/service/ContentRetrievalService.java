@@ -35,14 +35,15 @@ public class ContentRetrievalService {
 	@GET
 	@Produces("application/json")
 	@Path("/ByPath")
-	public String getContentByPath(@QueryParam("contentPath") String contentPath) throws Exception{
+	public Response getContentByPath(@QueryParam("contentPath") String contentPath) throws Exception{
 		
 		ContentProvider contentProvider = (ContentProvider)SpringApplicationContext.getBean("contentProvider");
 		ContentHolder contentHolder = contentProvider.getContent(contentPath, MetaSearch.BY_PATH);
 		
+		SingleContentPiece singleContentPiece = new SingleContentPiece(contentHolder.getMetaData().getContentId(), contentHolder.getMetaData().getContentPath(),
+				Base64Encoder.encodeContent(contentHolder.getContent()));
 		
-		
-		return "Content By Path";
+		return Response.status(Response.Status.OK).entity(singleContentPiece).build();
 	}
 
 }

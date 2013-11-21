@@ -1,7 +1,7 @@
 contentment
 ===========
 
-This is a java applictaion that delivers content which can then be consumed by another application. It provides content 
+This is a java application that delivers content which can then be consumed by another application. It provides content 
 through a REST webservice in JSON format. The content is Base64 encoded. Currently the service only delivers a single piece of content which is retrieved by either passing the content id or content path. 
 e.g for the content with id = 100
 http://localhost:8080/content-service/rest/GetContent/ById?contentId=100

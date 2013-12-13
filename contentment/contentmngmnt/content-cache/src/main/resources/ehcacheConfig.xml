@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache  dynamicConfig="true" name="htmlCache"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd">
+	<diskStore  path="java.io.tmp"/>
+	<defaultCache maxElementsInMemory="100" memoryStoreEvictionPolicy="LRU" timeToLiveSeconds="120" > </defaultCache>
+	<cache  name="org.content.cache.CacheElement" maxElementsInMemory="100" 
+	maxElementsOnDisk="100" memoryStoreEvictionPolicy="LRU" timeToLiveSeconds="120" overflowToDisk="true"  ></cache>
+
+</ehcache>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.3.0.201307091516-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[true]]></enableImports>
+	<configs>
+		<config>src/main/resources/content-provider-context.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[inspector]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>true</incomplete>
+			<configs>
+				<config>src/main/resources/content-inspector-context.xml</config>
+			</configs>
+			<profiles>
+				<profile><![CDATA[inspector]]></profile>
+			</profiles>
+		</configSet>
+	</configSets>
+</beansProjectDescription>

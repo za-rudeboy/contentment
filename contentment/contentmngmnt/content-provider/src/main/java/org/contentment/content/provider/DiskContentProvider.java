@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.content.cache.CacheManager;
 import org.contentment.content.inspector.meta.ContentMetaDataHolder;
 import org.contentment.content.inspector.meta.MetaDataReader;
 import org.contentment.content.inspector.meta.MetaSearch;
@@ -13,22 +14,38 @@ import org.contentment.content.inspector.meta.MetaSearch;
 public class DiskContentProvider implements ContentProvider {
 
 	private MetaDataReader metaDataReader;
+	private CacheManager cacheManager;
+	private final static String CACHE_NAME = ContentHolder.class.getName();
 
 	@Override
 	public ContentHolder getContent(ContentMetaDataHolder contentMetaDataHolder)
 			throws IOException {
 
-		File file = new File(contentMetaDataHolder.getAbsoluteFilePath());
-		ContentHolder contentHolder = new ContentHolder();
-
-		contentHolder.setContent(FileUtils.readFileToByteArray(file));
-
-		contentHolder.setBinary(contentMetaDataHolder.getContentType()
-				.contains("text") ? false : true);
+		Object cachedContent = cacheManager.getFromCache(CACHE_NAME, contentMetaDataHolder.getContentId());
 		
-		contentHolder.setMetaData(contentMetaDataHolder);
+		if (cachedContent != null){
+			
+			ContentHolder contentHolder = (ContentHolder) cachedContent;
+			return contentHolder;
+			
+		} else {
+			
+			File file = new File(contentMetaDataHolder.getAbsoluteFilePath());
+			ContentHolder contentHolder = new ContentHolder();
+			contentHolder.setContent(FileUtils.readFileToByteArray(file));
+			contentHolder.setBinary(contentMetaDataHolder.getContentType()
+					.contains("text") ? false : true);
+			contentHolder.setMetaData(contentMetaDataHolder);
+			
+			
+			cacheManager.putInCache(CACHE_NAME, contentMetaDataHolder.getContentId(), contentHolder);
+			
+			return contentHolder;
+			
+		}
 		
-		return contentHolder;
+		
+		
 	}
 
 	@Override
@@ -57,6 +74,14 @@ public class DiskContentProvider implements ContentProvider {
 
 	public void setMetaDataReader(MetaDataReader metaDataReader) {
 		this.metaDataReader = metaDataReader;
+	}
+
+	public CacheManager getCacheManager() {
+		return cacheManager;
+	}
+
+	public void setCacheManager(CacheManager cacheManager) {
+		this.cacheManager = cacheManager;
 	}
 
 }

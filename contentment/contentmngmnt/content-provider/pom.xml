@@ -19,6 +19,12 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+    	<groupId>za.co.sideproject.contentment</groupId>
+    	<artifactId>content-cache</artifactId>
+    	<version>${project.version}</version>
+    </dependency>
     <dependency>
     	<groupId>za.co.sideproject.contentment</groupId>
     	<artifactId>content-inspector</artifactId>

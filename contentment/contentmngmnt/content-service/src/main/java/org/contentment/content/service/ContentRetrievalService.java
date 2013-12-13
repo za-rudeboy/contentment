@@ -12,6 +12,8 @@ import org.contentment.content.provider.ContentHolder;
 import org.contentment.content.provider.ContentProvider;
 import org.contentment.content.spring.SpringApplicationContext;
 import org.contentment.content.util.Base64Encoder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Path("/GetContent")
 public class ContentRetrievalService {
@@ -28,6 +30,8 @@ public class ContentRetrievalService {
 		SingleContentPiece singleContentPiece = new SingleContentPiece(contentHolder.getMetaData().getContentId(), contentHolder.getMetaData().getContentPath(),
 				Base64Encoder.encodeContent(contentHolder.getContent()));
 		
+		logger.info("Request for content with id: {}", contentId);
+		
 		return Response.status(Response.Status.OK).entity(singleContentPiece).build();
 		
 	}
@@ -43,7 +47,12 @@ public class ContentRetrievalService {
 		SingleContentPiece singleContentPiece = new SingleContentPiece(contentHolder.getMetaData().getContentId(), contentHolder.getMetaData().getContentPath(),
 				Base64Encoder.encodeContent(contentHolder.getContent()));
 		
+		logger.info("Request for content with path: {}", contentPath);
+		
 		return Response.status(Response.Status.OK).entity(singleContentPiece).build();
 	}
+	
+	
+	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 }

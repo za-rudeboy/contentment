@@ -10,6 +10,8 @@ import org.content.cache.CacheManager;
 import org.contentment.content.inspector.meta.ContentMetaDataHolder;
 import org.contentment.content.inspector.meta.MetaDataReader;
 import org.contentment.content.inspector.meta.MetaSearch;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DiskContentProvider implements ContentProvider {
 
@@ -29,6 +31,8 @@ public class DiskContentProvider implements ContentProvider {
 			return contentHolder;
 			
 		} else {
+			
+			logger.info("Cache miss for: {}", contentMetaDataHolder.getAbsoluteFilePath());
 			
 			File file = new File(contentMetaDataHolder.getAbsoluteFilePath());
 			ContentHolder contentHolder = new ContentHolder();
@@ -83,5 +87,7 @@ public class DiskContentProvider implements ContentProvider {
 	public void setCacheManager(CacheManager cacheManager) {
 		this.cacheManager = cacheManager;
 	}
+	
+	private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
 }

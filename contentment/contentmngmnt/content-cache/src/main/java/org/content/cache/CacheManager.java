@@ -8,6 +8,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import net.sf.ehcache.Cache;
@@ -57,7 +59,7 @@ public class CacheManager {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Failure to put element into cache", e);
 			return false;
 		}
 	}
@@ -79,7 +81,7 @@ public class CacheManager {
 		ehCacheManager = net.sf.ehcache.CacheManager.newInstance(configFile);
 		cacheConfigured = true;
 		
-		
+		logger.info("EhCache has been configured and initialised");
 		
 	}
 	
@@ -87,6 +89,7 @@ public class CacheManager {
 		return cacheConfigured;
 	}
 
+	private Logger logger = LoggerFactory.getLogger(getClass().getName());
 	
 	
 

@@ -27,6 +27,8 @@ public class DiskContentProvider implements ContentProvider {
 		
 		if (cachedContent != null){
 			
+			logger.info("Cache hit for: {}", contentMetaDataHolder.getAbsoluteFilePath());
+			
 			ContentHolder contentHolder = (ContentHolder) cachedContent;
 			return contentHolder;
 			
